@@ -12,7 +12,7 @@ Clone or download the repository to your machine. The collection and environment
 
 ![](/screenshots/postmanImport.png)
 
-Add your API key to the Environment Variable 'ethosApiKey'.  Update the ethosIntegrationUrl if needed for your region.
+Add your API key to the Environment Variable 'ethosApiKey'.  Update the 'ethosIntegrationUrl' if needed for your region.
 
 ![](/screenshots/postmanVarSetup.png)
 
@@ -25,18 +25,11 @@ You are now ready to execute an HTTP request.  For example, click Collections >>
 
 ![](/screenshots/postmanRunRequest.png)
 
-## More Detail
-
-The general process for using Ethos Integration APIs is:
-* Use API Key to obtain JWT Access token
-* Use JWT Access Token to make API calls
-
-The JWT Access token expires after 5 minutes, so it is not necessary to obtain a new one *every* time an API call is made. If an expired JWT Access Token is used to make an API call the HTTP response will be **401 Unauthorized**.
 
 ## Pre-request Script
  This collection contains a pre-request script to simplify calling ethos end points.  The script will automatically:
- 1. Prepend the ethos integration url to any request that needs it.  For example, to call https://integrate.elluciancloud.com/persons end point - you only need to enter 'persons'.  Any endpoint that does not have the /api/{resource} pattern you will need to enter the full url
- 2. Manage Authorization token.  The script will get and store and use the authorization token and refresh it as needed for timeouts.  This requires a valid value in the variable 'ethosApiKey'
+ 1. Prepend the ethos integration url to any request that needs it.  For example, to call https://integrate.elluciancloud.com/persons end point - you only need to enter 'persons'.  Any endpoint that does not have the /api/{resource} pattern you will need to enter the full url.
+ 2. Manage Authorization token.  The script will get, store and use the authorization token. This requires a valid value in the variable 'ethosApiKey'
  3. Encode query string parameters.
 
 
