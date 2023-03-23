@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "4655d795-7cc6-448b-87bf-da2d98b063ad",
+		"_postman_id": "ca5c946e-a69c-467f-9de0-f5c1a218ea2c",
 		"name": "Ethos Integration Examples",
 		"description": "This collection includes examples of how to make some of the most common API calls through Ethos Integration.",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
@@ -391,6 +391,81 @@
 							],
 							"path": [
 								"publish"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Banner Business Process API",
+			"item": [
+				{
+					"name": "sections-inquiry",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "sections-inquiry?termCode=202370",
+							"host": [
+								"sections-inquiry"
+							],
+							"query": [
+								{
+									"key": "termCode",
+									"value": "202370"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "qapi building-codes",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/vnd.hedtech.integration.v1.0.0+json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"code\": \"1BJSS\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://integrate.elluciancloud.com/qapi/building-codes",
+							"protocol": "https",
+							"host": [
+								"integrate",
+								"elluciancloud",
+								"com"
+							],
+							"path": [
+								"qapi",
+								"building-codes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "building-codes",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "building-codes",
+							"host": [
+								"building-codes"
 							]
 						}
 					},
