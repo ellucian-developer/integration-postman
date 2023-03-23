@@ -8,25 +8,22 @@ For more Postman learning and documentation start here -> https://learning.getpo
 
 ## Getting Started
 
-Clone or download the repository to your machine. The collection and environment files are in json format. Launch Postman and import the collection json file by clicking the **Import** button at the top of the Postman application.
+Clone or download the repository to your machine. The collection and environment files are in json format. Launch Postman and import the collection and environment json file by clicking the **Import** button at the top of the Postman application.
 
-![](/screenshots/postman1.png)
+![](/screenshots/postmanImport.png)
 
-You will see the collection loaded into the collections browser on the left. The collection format version is v2.1, older versions of Postman may not be able to import the file and you must update Postman.
+Add your API key to the Environment Variable 'ethosApiKey'.  Update the ethosIntegrationUrl if needed for your region.
 
-![](/screenshots/postman2.png)
+![](/screenshots/postmanVarSetup.png)
 
-Next import the environment json file by clicking the gear icon (Manage Environments) in the upper right and click **Import**.
-
-![](/screenshots/postman3.png)
-
-Now that the collection and environment are loaded into Postman, enter your API Key into the environment variable. Click the gear icon (Manage Environments) again and click on the "Ethos Integration" environment.  Update the variable "API Key" with a valid API Key value and click **Update**.
-
-![](/screenshots/postman4.png)
 
 Finish the setup by selecting the environment from the dropdown menu so that Postman will use it.
 
-![](/screenshots/postman5.png)
+![](/screenshots/postmanSelectEnvironment.png)
+
+You are now ready to execute an HTTP request.  For example, click Collections >> Ethos Integration Examples >> Some Basics >> Read all courses resource and then hit Send.  Notice the results show below.
+
+![](/screenshots/postmanRunRequest.png)
 
 ## More Detail
 
@@ -36,11 +33,13 @@ The general process for using Ethos Integration APIs is:
 
 The JWT Access token expires after 5 minutes, so it is not necessary to obtain a new one *every* time an API call is made. If an expired JWT Access Token is used to make an API call the HTTP response will be **401 Unauthorized**.
 
-In this Postman *collection* and *environment* the API Key and JWT Access Token are stored in environment variables and the API requests will use them. If you examine the API call "Use API Key to get Access Token" you will see that Postman uses the API Key stored in the environment variable and then stores the result the "Access Token" environment variable.
+## Pre-request Script
+ This collection contains a pre-request script to simplify calling ethos end points.  The script will automatically:
+ 1. Prepend the ethos integration url to any request that needs it.  For example, to call https://integrate.elluciancloud.com/persons end point - you only need to enter 'persons'.  Any endpoint that does not have the /api/{resource} pattern you will need to enter the full url
+ 2. Manage Authorization token.  The script will get and store and use the authorization token and refresh it as needed for timeouts.  This requires a valid value in the variable 'ethosApiKey'
+ 3. Encode query string parameters.
 
-![](/screenshots/postman6.png)
-
-Subsequent API calls will then use the value stored in "Access Token" for authorization. If an API call returns a **401 Unauthorized** simply click on the "Use API Key to get Access Token" request again to obtain a new JWT Access Token.
 
 
-This document was written using Postman v6.3.0.
+
+This document was written using Postman March 2023 (v10.12)
