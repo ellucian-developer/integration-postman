@@ -1,0 +1,1650 @@
+{
+	"info": {
+		"_postman_id": "236057d8-0f5a-406f-8c1f-994f1add042b",
+		"name": "Experience Resources",
+		"description": "The \"GET ALL\" items are used to confirm data returning from Ethos as used by Experience API calls (as of 14 March 2022 updates to [https://resources.elluciancloud.com/bundle/ellucian_experience_acn_configure/page/c_experience_api_requests.html).](https://resources.elluciancloud.com/bundle/ellucian_experience_acn_configure/page/c_experience_api_requests.html).) These requests start from GET about and go down to GET ALL Subjects. Filtered get calls in between (e.g., GET person-holds by person) are included for ease of troubleshooting queries that may be specific to a user.\n\nGet persons queries found below \"GET ALL Subjects\" are designed to replicate the behavior of cards created from the Student Lookup template (and the person identifier would need to be adjusted based on the institution's configuration).\n\nQueries for housing-requests and housing-assignments may not be available to the Experience API user via API calls, but if appropriate permissions are granted, these queries can assist confirming readiness to load these resources into data access, or confirm if an error has been resolved before reloading the resource.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "14356194"
+	},
+	"item": [
+		{
+			"name": "PROD Get Access Token for Production",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var newToken = responseBody;",
+							"postman.setEnvironmentVariable(\"token\", newToken);",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{API Key for Production}}"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{Auth Address}}?expirationMinutes=30",
+					"host": [
+						"{{Auth Address}}"
+					],
+					"query": [
+						{
+							"key": "expirationMinutes",
+							"value": "30"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "TEST Get an Access Token for Test",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var newToken = responseBody;",
+							"postman.setEnvironmentVariable(\"token\", newToken);",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{API Key for Test}}"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{Auth Address}}?expirationMinutes=30",
+					"host": [
+						"{{Auth Address}}"
+					],
+					"query": [
+						{
+							"key": "expirationMinutes",
+							"value": "30"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET about",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{Proxy Address}}/about",
+					"host": [
+						"{{Proxy Address}}"
+					],
+					"path": [
+						"about"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Colleague Resources",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{Proxy Address}}/resources",
+					"host": [
+						"{{Proxy Address}}"
+					],
+					"path": [
+						"resources"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Banner Resources-integration",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{Proxy Address}}/resources-integration",
+					"host": [
+						"{{Proxy Address}}"
+					],
+					"path": [
+						"resources-integration"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Banner Resources-student",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{Proxy Address}}/resources-student",
+					"host": [
+						"{{Proxy Address}}"
+					],
+					"path": [
+						"resources-student"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET ALL academic-catalogs",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{Proxy Address}}/academic-catalogs",
+					"host": [
+						"{{Proxy Address}}"
+					],
+					"path": [
+						"academic-catalogs"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET ALL academic-credentials",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{Proxy Address}}/academic-credentials",
+					"host": [
+						"{{Proxy Address}}"
+					],
+					"path": [
+						"academic-credentials"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET ALL academic-disciplines",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{Proxy Address}}/academic-disciplines",
+					"host": [
+						"{{Proxy Address}}"
+					],
+					"path": [
+						"academic-disciplines"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET ALL academic-levels",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{Proxy Address}}/academic-levels",
+					"host": [
+						"{{Proxy Address}}"
+					],
+					"path": [
+						"academic-levels"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET ALL academic-periods",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{Proxy Address}}/academic-periods",
+					"host": [
+						"{{Proxy Address}}"
+					],
+					"path": [
+						"academic-periods"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET ALL academic-programs",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{Proxy Address}}/academic-programs",
+					"host": [
+						"{{Proxy Address}}"
+					],
+					"path": [
+						"academic-programs"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET ALL addresses",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{Proxy Address}}/addresses",
+					"host": [
+						"{{Proxy Address}}"
+					],
+					"path": [
+						"addresses"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET ALL advisor-types",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{Proxy Address}}/advisor-types",
+					"host": [
+						"{{Proxy Address}}"
+					],
+					"path": [
+						"advisor-types"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET ALL buildings",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}"
+					},
+					{
+						"key": "Content-type",
+						"value": "application/vnd.hedtech.integration.v1+json",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{Proxy Address}}/buildings",
+					"host": [
+						"{{Proxy Address}}"
+					],
+					"path": [
+						"buildings"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET ALL courses",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}"
+					},
+					{
+						"key": "Content-type",
+						"value": "application/vnd.hedtech.integration.v1+json",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{Proxy Address}}/courses",
+					"host": [
+						"{{Proxy Address}}"
+					],
+					"path": [
+						"courses"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET ALL course-title-types",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}"
+					},
+					{
+						"key": "Content-type",
+						"value": "application/vnd.hedtech.integration.v1+json",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{Proxy Address}}/course-title-types",
+					"host": [
+						"{{Proxy Address}}"
+					],
+					"path": [
+						"course-title-types"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET ALL educational-institution-units",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}"
+					},
+					{
+						"key": "Content-type",
+						"value": "application/vnd.hedtech.integration.v1+json",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{Proxy Address}}/educational-institution-units",
+					"host": [
+						"{{Proxy Address}}"
+					],
+					"path": [
+						"educational-institution-units"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET ALL gender-identities",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{Proxy Address}}/gender-identities",
+					"host": [
+						"{{Proxy Address}}"
+					],
+					"path": [
+						"gender-identities"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET ALL grade-definitions",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{Proxy Address}}/grade-definitions",
+					"host": [
+						"{{Proxy Address}}"
+					],
+					"path": [
+						"grade-definitions"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET ALL instructional-events",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{Proxy Address}}/instructional-events",
+					"host": [
+						"{{Proxy Address}}"
+					],
+					"path": [
+						"instructional-events"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET ALL personal-pronouns",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{Proxy Address}}/personal-pronouns",
+					"host": [
+						"{{Proxy Address}}"
+					],
+					"path": [
+						"personal-pronouns"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET ALL person-hold-types",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{Proxy Address}}/person-hold-types",
+					"host": [
+						"{{Proxy Address}}"
+					],
+					"path": [
+						"person-hold-types"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET ALL person-holds",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{Proxy Address}}/person-holds",
+					"host": [
+						"{{Proxy Address}}"
+					],
+					"path": [
+						"person-holds"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET person-holds by person",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{Proxy Address}}/person-holds?criteria={\"person\":{\"id\":\"{{Person GUID}}\"}}",
+					"host": [
+						"{{Proxy Address}}"
+					],
+					"path": [
+						"person-holds"
+					],
+					"query": [
+						{
+							"key": "criteria",
+							"value": "{\"person\":{\"id\":\"{{Person GUID}}\"}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET ALL persons",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{Proxy Address}}/persons",
+					"host": [
+						"{{Proxy Address}}"
+					],
+					"path": [
+						"persons"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET ALL rooms",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{Proxy Address}}/rooms",
+					"host": [
+						"{{Proxy Address}}"
+					],
+					"path": [
+						"rooms"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET ALL section-grade-types",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{Proxy Address}}/section-grade-types",
+					"host": [
+						"{{Proxy Address}}"
+					],
+					"path": [
+						"section-grade-types"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET ALL section-instructors",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{Proxy Address}}/section-instructors",
+					"host": [
+						"{{Proxy Address}}"
+					],
+					"path": [
+						"section-instructors"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET ALL section-registrations v7",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}"
+					},
+					{
+						"key": "Accept",
+						"value": "application/vnd.hedtech.integration.v7+json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{Proxy Address}}/section-registrations",
+					"host": [
+						"{{Proxy Address}}"
+					],
+					"path": [
+						"section-registrations"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET ALL section-registrations",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{Proxy Address}}/section-registrations",
+					"host": [
+						"{{Proxy Address}}"
+					],
+					"path": [
+						"section-registrations"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET section-registrations by registrant",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{Proxy Address}}/section-registrations?criteria={\"registrant\":{\"id\":\"{{Person GUID}}\"}}",
+					"host": [
+						"{{Proxy Address}}"
+					],
+					"path": [
+						"section-registrations"
+					],
+					"query": [
+						{
+							"key": "criteria",
+							"value": "{\"registrant\":{\"id\":\"{{Person GUID}}\"}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET section-registrations for person v7",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}"
+					},
+					{
+						"key": "Accept",
+						"value": "application/vnd.hedtech.integration.v7+json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{Proxy Address}}/section-registrations?registrant={{Person GUID}}",
+					"host": [
+						"{{Proxy Address}}"
+					],
+					"path": [
+						"section-registrations"
+					],
+					"query": [
+						{
+							"key": "registrant",
+							"value": "{{Person GUID}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET ALL section-title-types",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{Proxy Address}}/section-title-types",
+					"host": [
+						"{{Proxy Address}}"
+					],
+					"path": [
+						"section-title-types"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET ALL sections",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{Proxy Address}}/sections",
+					"host": [
+						"{{Proxy Address}}"
+					],
+					"path": [
+						"sections"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET ALL sites",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{Proxy Address}}/sites",
+					"host": [
+						"{{Proxy Address}}"
+					],
+					"path": [
+						"sites"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET ALL student-academic-programs",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{Proxy Address}}/student-academic-programs",
+					"host": [
+						"{{Proxy Address}}"
+					],
+					"path": [
+						"student-academic-programs"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET student-academic-programs by student GUID",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{Proxy Address}}/student-academic-programs?criteria={\"student\":{\"id\":\"{{Person GUID}}\"}}",
+					"host": [
+						"{{Proxy Address}}"
+					],
+					"path": [
+						"student-academic-programs"
+					],
+					"query": [
+						{
+							"key": "criteria",
+							"value": "{\"student\":{\"id\":\"{{Person GUID}}\"}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET ALL student-advisor-relationships",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{Proxy Address}}/student-advisor-relationships",
+					"host": [
+						"{{Proxy Address}}"
+					],
+					"path": [
+						"student-advisor-relationships"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET student-advisor-relationships by student maybe?",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{Proxy Address}}/student-advisor-relationships?criteria={\"student\":{\"id\":\"{{Person GUID}}\"}}",
+					"host": [
+						"{{Proxy Address}}"
+					],
+					"path": [
+						"student-advisor-relationships"
+					],
+					"query": [
+						{
+							"key": "criteria",
+							"value": "{\"student\":{\"id\":\"{{Person GUID}}\"}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET ALL students",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{Proxy Address}}/students",
+					"host": [
+						"{{Proxy Address}}"
+					],
+					"path": [
+						"students"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET ALL subjects",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{Proxy Address}}/subjects",
+					"host": [
+						"{{Proxy Address}}"
+					],
+					"path": [
+						"subjects"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET persons by last name",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{Proxy Address}}/persons?criteria={\"names\":[{\"lastName\":\"Johnson\"}],\"roles\":[{\"role\":\"student\"}]}",
+					"host": [
+						"{{Proxy Address}}"
+					],
+					"path": [
+						"persons"
+					],
+					"query": [
+						{
+							"key": "criteria",
+							"value": "{\"names\":[{\"lastName\":\"Johnson\"}],\"roles\":[{\"role\":\"student\"}]}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET persons by Colleague ID",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{Proxy Address}}/persons?criteria={\"credentials\":[{\"type\":\"colleaguePersonId\",\"value\":\"0001234\"}]}",
+					"host": [
+						"{{Proxy Address}}"
+					],
+					"path": [
+						"persons"
+					],
+					"query": [
+						{
+							"key": "criteria",
+							"value": "{\"credentials\":[{\"type\":\"colleaguePersonId\",\"value\":\"0001234\"}]}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET persons by Banner ID",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{Proxy Address}}/persons?criteria={\"credentials\":[{\"type\":\"bannerId\",\"value\":\"S000123456\"}]}",
+					"host": [
+						"{{Proxy Address}}"
+					],
+					"path": [
+						"persons"
+					],
+					"query": [
+						{
+							"key": "criteria",
+							"value": "{\"credentials\":[{\"type\":\"bannerId\",\"value\":\"S000123456\"}]}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET ALL housing-requests",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{Proxy Address}}/housing-requests",
+					"host": [
+						"{{Proxy Address}}"
+					],
+					"path": [
+						"housing-requests"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET ALL housing-assignments",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{Proxy Address}}/housing-assignments",
+					"host": [
+						"{{Proxy Address}}"
+					],
+					"path": [
+						"housing-assignments"
+					],
+					"query": [
+						{
+							"key": "limit",
+							"value": "",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"pm.request.url=encodeURI(pm.variables.replaceIn(pm.request.url))"
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
