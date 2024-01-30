@@ -1,5 +1,7 @@
 # Ethos Integration Postman Examples
 
+> This repository is no longer being maintained.  Ellucian now recommends <a href="https://www.usebruno.com/compare/bruno-vs-postman" target="_blank">Bruno</a> and maintains an API collection in Bruno’s format <a href="https://github.com/ellucian-developer/integration-bruno" target="_blank">here</a>
+
 Postman is an API Development Environment that allows for the development and testing of APIs, like those in Ethos Integration. Postman is a free and cross-platform application.  Get Postman here -> https://www.getpostman.com
 
 This repository contains a Postman *collection* and *environment*. A *collection* is simply a group of related API requests. The collection here contains examples of how to do things in Ethos Integration like obtaining an access token, calling GET/POST/PUT/DEL on a resource and consuming change-requests. An *environment* is a set of key-value pairs, essentially variables, that can be shared among API requests. The environment in this repository is used to store an API key and JWT access token.
